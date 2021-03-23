@@ -22,22 +22,16 @@ function MarkovGeneratorWord(n, max) {
       return false;
     }
 
-    // Store the first ngram of this line
     var beginning = tokens.slice(0, this.n).join(' ');
     this.beginnings.push(beginning);
 
-      // Now let's go through everything and create the dictionary
     for (var i = 0; i < tokens.length - this.n; i++) {
-      // Usings slice to pull out N elements from the array
       gram = tokens.slice(i, i + this.n).join(' ');
-      // What's the next element in the array?
       next = tokens[i + this.n];
 
-      // Is this a new one?
       if (!this.ngrams[gram]) {
         this.ngrams[gram] = [];
       }
-      // Add to the list
       this.ngrams[gram].push(next);
     }
   }
